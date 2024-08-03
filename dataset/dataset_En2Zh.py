@@ -31,8 +31,9 @@ class En2ZhDataset(Dataset):
         return self.dataset[index]
 
 train_dataset = En2ZhDataset(data_file='./dataset/dataset_En2Zh/translation2019zh_train.json')
-train_dataset = train_dataset[:50000]
+train_dataset = train_dataset[:58000]
 val_dataset = En2ZhDataset(data_file='./dataset/dataset_En2Zh/translation2019zh_valid.json')
+val_dataset = val_dataset[:2028]
 # print(train_dataset[2])
 
 # 创建分词器
