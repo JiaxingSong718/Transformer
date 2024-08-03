@@ -1,8 +1,16 @@
 /checkpoints/*.pth
 !/checkpoints/
 
-/dataset/dataset_De2En/*
+/dataset/dataset_De2En/*.pt
+/dataset/dataset_De2En/*.pkl
+/dataset/dataset_De2En/train/*.en
+/dataset/dataset_De2En/train/*.de
+/dataset/dataset_De2En/val/*.en
+/dataset/dataset_De2En/val/*.de
+!/dataset/dataset_De2En/train/
+!/dataset/dataset_De2En/val/
 !/dataset/dataset_De2En/
 
-/dataset/dataset_En2Zh/*
+/dataset/dataset_En2Zh/*.pt
+/dataset/dataset_En2Zh/*.pkl
 !/dataset/dataset_En2Zh/
