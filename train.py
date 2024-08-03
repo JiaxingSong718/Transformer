@@ -53,7 +53,7 @@ def train(model, dataloader, loss_fn, optimizer):
     
     return total_loss / len(dataloader)
 
-def validate(model, dataloader, loss_fn):
+def validate(model, dataloader, loss_fn, PPL_vocab):
     model.eval()
     total_loss = 0
     references = []
@@ -80,7 +80,7 @@ def validate(model, dataloader, loss_fn):
                     references.append([ref_tokens])
     
     bleu_score = calculate_bleu_score(references, hypotheses)
-    ppl_score = calculate_ppl_score(hypotheses, dataloader)
+    ppl_score = calculate_ppl_score(hypotheses, dataloader,len(PPL_vocab))
     return total_loss / len(dataloader), bleu_score, ppl_score
 
 def main(args):
@@ -99,6 +99,7 @@ def main(args):
             en_vocab_de = pickle.load(f)
         with open('./dataset/dataset_De2En/de_vocab.pkl', 'rb') as f:
             de_vocab = pickle.load(f)
+        PPL_vocab = en_vocab_de
     elif args.dataset == 'En2Zh':
         train_dataset = TranslationDataset('./dataset/dataset_En2Zh/train.pt')
         val_dataset = TranslationDataset('./dataset/dataset_De2En/val.pt')
@@ -106,6 +107,7 @@ def main(args):
             en_vocab_zh = pickle.load(f)
         with open('./dataset/dataset_En2Zh/zh_vocab.pkl', 'rb') as f:
             zh_vocab = pickle.load(f)
+        PPL_vocab = zh_vocab
     else:
         raise ValueError(f"Unsupported dataset: {args.dataset}")
 
@@ -132,7 +134,7 @@ def main(args):
         avg_train_loss = train(transformer, train_dataloader, loss_fn, optimizer)
         train_losses.append(avg_train_loss)
 
-        avg_val_loss, bleu_score, ppl_score = validate(transformer, val_dataloader, loss_fn)
+        avg_val_loss, bleu_score, ppl_score = validate(transformer, val_dataloader, loss_fn, PPL_vocab)
         val_losses.append(avg_val_loss)
         bleu_scores.append(bleu_score)
         ppl_scores.append(ppl_score)
@@ -147,10 +149,10 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset', type=str, choices=['De2En', 'En2Zh'], default='En2Zh', help='Specify the dataset to use')
-    parser.add_argument('--weights', type=str, default='checkpoints/model_En2Zh.pth', help='Initial weights path')
+    parser.add_argument('--dataset', type=str, choices=['De2En', 'En2Zh'], default='De2En', help='Specify the dataset to use')
+    parser.add_argument('--weights', type=str, default='checkpoints/model_De2En1.pth', help='Initial weights path')
     parser.add_argument('--epochs', type=int, default=150)
-    parser.add_argument('--batch-size', type=int, default=128, help='Total batch size for all GPUs')
+    parser.add_argument('--batch-size', type=int, default=256, help='Total batch size for all GPUs')
     args = parser.parse_args()
 
     main(args)

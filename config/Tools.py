@@ -4,9 +4,7 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 from config.config import *
-from dataset.dataset_De2En import  de_vocab
 from nltk.translate.bleu_score import corpus_bleu
-
 
 # Ensure nltk resources are downloaded
 # nltk.download('punkt', download_dir='./config/nltk_data')
@@ -15,9 +13,9 @@ nltk.data.path.append('./config/nltk_data')
 def calculate_bleu_score(references, hypotheses):
     return corpus_bleu(references, hypotheses) * 100  # BLEU score is usually reported as a percentage
 
-def calculate_ppl_score(hypotheses, dataloader):
+def calculate_ppl_score(hypotheses, dataloader,vocab_size):
     # PPL calculation assumes a vocab size and proper normalization
-    vocab_size = len(de_vocab)  # or en_vocab based on your language model
+    vocab_size = vocab_size  # or en_vocab based on your language model
     total_log_prob = 0
     total_words = 0
     for i, (pad_encoder_x, pad_decoder_x) in enumerate(dataloader):
