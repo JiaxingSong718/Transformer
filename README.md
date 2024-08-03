@@ -47,7 +47,12 @@ Transformer/
 ```
 
 ## Train
-
+### Prepare
+先预处理数据将其保存为.pt文件
+```
+python ./dataset/dataset_De2En.py
+```
+接下来执行train.py
 ```
 python train.py --dataset De2En --weights ./checkpoints/model_De2En.pth --epochs 150 --batch-size 256
 ```
