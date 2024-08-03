@@ -4,14 +4,15 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 from config.config import *
-from nltk.translate.bleu_score import corpus_bleu
+from nltk.translate.bleu_score import corpus_bleu, SmoothingFunction
 
 # Ensure nltk resources are downloaded
 # nltk.download('punkt', download_dir='./config/nltk_data')
-nltk.data.path.append('./config/nltk_data')
+# nltk.data.path.append('./config/nltk_data')
 
 def calculate_bleu_score(references, hypotheses):
-    return corpus_bleu(references, hypotheses) * 100  # BLEU score is usually reported as a percentage
+    smoothie = SmoothingFunction().method1
+    return corpus_bleu(references, hypotheses, smoothing_function=smoothie) * 100  # BLEU score is usually reported as a percentage
 
 def calculate_ppl_score(hypotheses, dataloader,vocab_size):
     # PPL calculation assumes a vocab size and proper normalization

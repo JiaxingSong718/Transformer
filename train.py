@@ -71,10 +71,10 @@ def validate(model, dataloader, loss_fn, PPL_vocab):
             # Collect predictions and references for BLEU and PPL calculations
             pred_ids = torch.argmax(decoder_z, dim=-1)
             for i in range(pred_ids.size(0)):
-                pred_tokens = pred_ids[i].cpu().tolist()
-                ref_tokens = pad_decoder_x[i].cpu().tolist()
-                pred_tokens = [t for t in pred_tokens if t != PAD_IDX]
-                ref_tokens = [t for t in ref_tokens if t != PAD_IDX]
+                # pred_tokens = pred_ids[i].tolist()
+                # ref_tokens = pad_decoder_x[i].tolist()
+                pred_tokens = [id for id in pred_ids[i].tolist() if id not in [BOS_IDX, EOS_IDX, PAD_IDX, UNK_IDX]]
+                ref_tokens = [id for id in pad_decoder_x[i].tolist() if id not in [BOS_IDX, EOS_IDX, PAD_IDX, UNK_IDX]]
                 if pred_tokens and ref_tokens:
                     hypotheses.append(pred_tokens)
                     references.append([ref_tokens])
