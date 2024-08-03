@@ -1,3 +1,8 @@
-/checkpoints/
-/dataset/dataset_De2En/
-/dataset/dataset_En2Zh/
+/checkpoints/*
+!/checkpoints/
+
+/dataset/dataset_De2En/*
+!/dataset/dataset_De2En/
+
+/dataset/dataset_En2Zh/*
+!/dataset/dataset_En2Zh/
