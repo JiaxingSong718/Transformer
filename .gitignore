@@ -10,7 +10,12 @@
 !/dataset/dataset_De2En/train/
 !/dataset/dataset_De2En/val/
 !/dataset/dataset_De2En/
+!/dataset/dataset_De2En/train/.gitkeep
+!/dataset/dataset_De2En/val/.gitkeep
+!/dataset/dataset_De2En/.gitkeep
 
 /dataset/dataset_En2Zh/*.pt
 /dataset/dataset_En2Zh/*.pkl
+/dataset/dataset_En2Zh/*.json
 !/dataset/dataset_En2Zh/
+!/dataset/dataset_En2Zh/.gitkeep
