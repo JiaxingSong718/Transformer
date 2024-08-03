@@ -1,4 +1,4 @@
-/checkpoints/*
+/checkpoints/*.pth
 !/checkpoints/
 
 /dataset/dataset_De2En/*
