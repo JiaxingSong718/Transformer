@@ -27,6 +27,25 @@ pip install -r requirements.txt  # install
 [repo](https://github.com/brightmart/nlp_chinese_corpus?tab=readme-ov-file)中的翻译语料(translation2019zh)
 
 note:由于设备原因，只取了translation2019zh中train的前58000个,valid的前2028个。
+
+将下载后的数据集按照如下结构放置：
+
+```
+Transformer/
+├── dataset/
+    └── dataset_De2En/
+        └── train/
+            ├── train.de
+            └── train.en
+        └── val/
+            ├── val.de
+            └── val.en
+
+    └── dataset_De2En/
+        ├── translation2019zh_train.json
+        └── translation2019zh_valid.json
+```
+
 ## Train
 
 ```
