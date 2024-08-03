@@ -50,7 +50,7 @@ Transformer/
 ### Prepare
 先预处理数据将其保存为.pt文件
 ```
-python ./dataset/dataset_De2En.py
+python ./dataset/dataset_De2En.py or python ./dataset/dataset_En2Zh.py
 ```
 接下来执行train.py
 ```
