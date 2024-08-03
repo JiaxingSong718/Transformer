@@ -19,9 +19,13 @@ pip install -r requirements.txt  # install
 ```
 ## Dataset
 法语 -> 英文数据集：
-数据集[train](https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz) [valid](https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz)
+
+数据集[train](https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz) 和 [valid](https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz)
+
 英文 -> 中文数据集：
+
 [repo](https://github.com/brightmart/nlp_chinese_corpus?tab=readme-ov-file)中的翻译语料(translation2019zh)
+
 note:由于设备原因，只取了translation2019zh中train的前58000个,valid的前2028个。
 ## Train
 
