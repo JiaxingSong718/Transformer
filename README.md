@@ -41,7 +41,7 @@ Transformer/
             ├── val.de
             └── val.en
 
-    └── dataset_De2En/
+    └── dataset_En2Zh/
         ├── translation2019zh_train.json
         └── translation2019zh_valid.json
 ```
